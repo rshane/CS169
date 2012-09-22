@@ -7,7 +7,11 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @movies = Movie.all
+    @movies= Movie.all(:order => params[:sort])
+    #if title link was clicked
+    @title_header   =  params[:sort] == "title" ? "hilite" : nil
+     #if release_date link was clicked
+    @release_header = params[:sort] == "release_date" ? "hilite" : nil
   end
 
   def new
