@@ -1,7 +1,7 @@
 class Movie < ActiveRecord::Base
   def self.avail_ratings
     ratings = Movie.find(:all, :select => 'rating', :group => 'rating').collect{|m| m.rating}
-    return ratings
+    return ratings.sort
   end
 
   def self.sql_ratings(ratings_list)
